@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { EXPERT_DATA } from '../types';
+import { EXPERT_DATA } from '../types.ts';
 
 interface ChoiceScreenProps {
   onGoDirect: () => void;
@@ -23,18 +23,18 @@ const ChoiceScreen: React.FC<ChoiceScreenProps> = ({ onGoDirect, onStartQuiz }) 
       </div>
 
       <div className="relative z-10 w-full max-w-md text-center">
-        {/* Expert Badge */}
-        <div className="mb-6 inline-block">
-          <div className="px-4 py-1.5 border border-accent/40 rounded-full bg-black/40 backdrop-blur-md">
-            <span className="text-[10px] uppercase tracking-[0.4em] text-accent font-bold">
+        {/* Expert Badge - Compacted */}
+        <div className="mb-4 inline-block">
+          <div className="px-3 py-1 border border-accent/40 rounded-full bg-black/40 backdrop-blur-md">
+            <span className="text-[9px] uppercase tracking-[0.4em] text-accent font-bold">
               Experiência de Luxo
             </span>
           </div>
         </div>
 
-        {/* Small Floating Profile Image */}
-        <div className="mb-8 flex justify-center">
-          <div className="w-32 h-32 rounded-full border-2 border-accent p-1 bg-black/20 backdrop-blur-sm shadow-[0_0_30px_rgba(212,175,55,0.3)] animate-float">
+        {/* Floating Profile Image - Smaller for mobile efficiency */}
+        <div className="mb-6 flex justify-center">
+          <div className="w-24 h-24 rounded-full border-2 border-accent p-1 bg-black/20 backdrop-blur-sm shadow-[0_0_30px_rgba(212,175,55,0.3)] animate-float">
             <img 
               src={EXPERT_DATA.mainPhoto} 
               alt={EXPERT_DATA.name}
@@ -43,39 +43,39 @@ const ChoiceScreen: React.FC<ChoiceScreenProps> = ({ onGoDirect, onStartQuiz }) 
           </div>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight leading-tight">
+        <h1 className="text-3xl md:text-5xl font-serif font-bold mb-4 tracking-tight leading-tight">
           Sua beleza merece uma <span className="text-highlight italic">avaliação exclusiva.</span>
         </h1>
         
-        <p className="text-stone-300 mb-10 text-lg font-light leading-relaxed">
+        <p className="text-stone-300 mb-8 text-base font-light leading-relaxed">
           Descubra o caminho para a naturalidade absoluta com a <span className="text-white font-medium">Dra. Suelen Borelli</span>.
         </p>
 
-        <div className="space-y-5">
+        <div className="space-y-4">
           <button 
             onClick={onStartQuiz}
-            className="group relative w-full py-5 px-8 bg-highlight text-black font-black rounded-2xl text-xl shadow-[0_20px_40px_rgba(255,215,0,0.3)] hover:scale-[1.03] transition-all active:scale-95 flex items-center justify-center gap-3 overflow-hidden"
+            className="group relative w-full py-4 px-8 bg-highlight text-black font-black rounded-2xl text-lg shadow-[0_20px_40px_rgba(255,215,0,0.3)] hover:scale-[1.03] transition-all active:scale-95 flex items-center justify-center gap-3 overflow-hidden"
           >
             {/* Shimmer effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none"></div>
-            <span>INICIAR AVALIAÇÃO AGORA</span>
-            <span className="text-2xl">✨</span>
+            <span>INICIAR AVALIAÇÃO</span>
+            <span className="text-xl">✨</span>
           </button>
           
           <button 
             onClick={onGoDirect}
-            className="w-full py-4 px-8 bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold rounded-2xl hover:bg-white/10 transition-all text-xs uppercase tracking-[0.2em]"
+            className="w-full py-3 px-8 bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold rounded-2xl hover:bg-white/10 transition-all text-[10px] uppercase tracking-[0.2em]"
           >
             Pular para o site completo
           </button>
         </div>
 
-        {/* Signature Footer */}
-        <div className="mt-12 flex flex-col items-center opacity-80">
-          <p className="font-signature text-4xl text-accent mb-1">
+        {/* Signature Footer - Compacted */}
+        <div className="mt-8 flex flex-col items-center opacity-80">
+          <p className="font-signature text-3xl text-accent mb-0.5">
             {EXPERT_DATA.name}
           </p>
-          <div className="h-0.5 w-8 bg-accent/40 rounded-full"></div>
+          <div className="h-0.5 w-6 bg-accent/40 rounded-full"></div>
         </div>
       </div>
 

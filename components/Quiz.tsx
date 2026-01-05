@@ -28,7 +28,7 @@ const Quiz: React.FC<QuizProps> = ({ onFinish, onCancel }) => {
   const progress = ((currentStep + 1) / QUIZ_QUESTIONS.length) * 100;
 
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center p-4 animate-in fade-in duration-500 overflow-hidden">
+    <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center p-3 animate-in fade-in duration-500 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img 
           src={EXPERT_DATA.mainPhoto} 
@@ -38,57 +38,59 @@ const Quiz: React.FC<QuizProps> = ({ onFinish, onCancel }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-md bg-stone-50 rounded-[2.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col border border-white/20">
-        <div className="bg-white px-6 py-5 flex items-center justify-between border-b border-stone-100">
+      <div className="relative z-10 w-full max-w-md bg-stone-50 rounded-[2rem] shadow-[0_30px_100px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col border border-white/20">
+        {/* Compact Header */}
+        <div className="bg-white px-5 py-3 flex items-center justify-between border-b border-stone-100">
           <div className="flex items-center gap-3">
             <div className="relative">
-                <div className="absolute -inset-1.5 bg-accent/30 rounded-full animate-pulse"></div>
-                <div className="relative w-14 h-14 rounded-full border-2 border-accent overflow-hidden shadow-xl bg-stone-100">
+                <div className="absolute -inset-1 bg-accent/30 rounded-full animate-pulse"></div>
+                <div className="relative w-10 h-10 rounded-full border-2 border-accent overflow-hidden shadow-lg bg-stone-100">
                     <img src={EXPERT_DATA.mainPhoto} alt="Hero" className="w-full h-full object-cover object-top" />
                 </div>
             </div>
             <div>
-              <h2 className="text-stone-900 font-black text-base leading-none uppercase tracking-tighter">Dra. {EXPERT_DATA.name}</h2>
-              <p className="text-[10px] text-accent font-black mt-1.5 uppercase tracking-[0.2em]">Avaliação de Perfil</p>
+              <h2 className="text-stone-900 font-black text-sm leading-none uppercase tracking-tighter">Dra. {EXPERT_DATA.name}</h2>
+              <p className="text-[8px] text-accent font-black mt-1 uppercase tracking-[0.2em]">Avaliação Exclusiva</p>
             </div>
           </div>
           <button 
             onClick={onCancel} 
-            className="bg-stone-100 text-stone-400 hover:text-stone-900 w-10 h-10 rounded-full flex items-center justify-center transition-all active:scale-90"
+            className="bg-stone-50 text-stone-400 hover:text-stone-900 w-8 h-8 rounded-full flex items-center justify-center transition-all active:scale-90 border border-stone-100"
           >
             ✕
           </button>
         </div>
 
-        <div className="w-full h-2 bg-stone-200">
+        {/* Thin Progress Bar */}
+        <div className="w-full h-1.5 bg-stone-200">
           <div 
-            className="h-full bg-accent transition-all duration-700 ease-out shadow-[0_0_15px_rgba(212,175,55,0.6)]"
+            className="h-full bg-accent transition-all duration-700 ease-out shadow-[0_0_10px_rgba(212,175,55,0.4)]"
             style={{ width: `${progress}%` }}
           />
         </div>
 
-        <div className="p-7 md:p-10 flex-1 bg-gradient-to-b from-white to-stone-50/50">
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-4">
-                <span className="px-3 py-1 bg-stone-100 rounded-full text-[9px] text-stone-500 font-black uppercase tracking-widest border border-stone-200">
-                  Pergunta {currentStep + 1} de {QUIZ_QUESTIONS.length}
+        <div className="p-6 md:p-8 flex-1 bg-gradient-to-b from-white to-stone-50/50">
+          <div className="mb-6">
+            <div className="flex justify-between items-center mb-3">
+                <span className="px-2 py-0.5 bg-stone-100 rounded-full text-[8px] text-stone-500 font-black uppercase tracking-widest border border-stone-200">
+                  {currentStep + 1} de {QUIZ_QUESTIONS.length}
                 </span>
-                <span className="text-xs font-black text-accent">{Math.round(progress)}%</span>
+                <span className="text-[10px] font-black text-accent">{Math.round(progress)}%</span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-serif font-bold text-stone-900 leading-tight">
+            <h3 className="text-xl md:text-2xl font-serif font-bold text-stone-900 leading-tight">
               {QUIZ_QUESTIONS[currentStep].text}
             </h3>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {QUIZ_QUESTIONS[currentStep].options.map((option, idx) => (
               <button
                 key={idx}
                 onClick={() => handleOptionSelect(option)}
-                className="w-full py-5 px-6 text-left bg-white border-2 border-stone-100 rounded-2xl text-stone-700 font-bold hover:border-accent hover:text-accent hover:bg-accent/5 transition-all shadow-sm active:scale-[0.98] text-base flex justify-between items-center group"
+                className="w-full py-4 px-5 text-left bg-white border-2 border-stone-100 rounded-xl text-stone-700 font-bold hover:border-accent hover:text-accent hover:bg-accent/5 transition-all shadow-sm active:scale-[0.98] text-sm flex justify-between items-center group"
               >
                 <span className="pr-4">{option}</span>
-                <span className="bg-stone-50 group-hover:bg-accent group-hover:text-black w-8 h-8 rounded-full flex items-center justify-center text-stone-300 transition-all">
+                <span className="bg-stone-50 group-hover:bg-accent group-hover:text-black w-7 h-7 rounded-full flex items-center justify-center text-stone-300 transition-all text-xs">
                   →
                 </span>
               </button>
@@ -96,18 +98,18 @@ const Quiz: React.FC<QuizProps> = ({ onFinish, onCancel }) => {
           </div>
         </div>
 
-        <div className="px-8 py-5 bg-stone-100/80 text-center border-t border-stone-200/50 backdrop-blur-sm">
-            <p className="text-[10px] text-stone-400 uppercase tracking-[0.2em] font-black">
-              Segurança • Naturalidade • Dra. Borelli
+        <div className="px-6 py-3 bg-stone-100/80 text-center border-t border-stone-200/50 backdrop-blur-sm">
+            <p className="text-[8px] text-stone-400 uppercase tracking-[0.2em] font-black">
+              Método Borelli • Naturalidade Real
             </p>
         </div>
       </div>
 
       <button 
         onClick={onCancel}
-        className="mt-8 py-4 px-10 bg-white/5 backdrop-blur-xl border border-white/10 text-white text-xs font-black rounded-full uppercase tracking-[0.3em] hover:bg-white/15 transition-all active:scale-95 shadow-2xl"
+        className="mt-6 py-3 px-8 bg-white/5 backdrop-blur-xl border border-white/10 text-white text-[10px] font-black rounded-full uppercase tracking-[0.3em] hover:bg-white/15 transition-all active:scale-95"
       >
-        Fechar e Acessar Site
+        Cancelar e Ver Site
       </button>
     </div>
   );
