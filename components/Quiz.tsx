@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { QUIZ_QUESTIONS, EXPERT_DATA, QuizResponse } from '../types';
+import { QUIZ_QUESTIONS, EXPERT_DATA, QuizResponse } from '../types.ts';
 
 interface QuizProps {
   onFinish: (responses: QuizResponse[]) => void;
@@ -29,7 +29,6 @@ const Quiz: React.FC<QuizProps> = ({ onFinish, onCancel }) => {
 
   return (
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center p-4 animate-in fade-in duration-500 overflow-hidden">
-      {/* Background Layer with Expert Image */}
       <div className="absolute inset-0 z-0">
         <img 
           src={EXPERT_DATA.mainPhoto} 
@@ -40,8 +39,6 @@ const Quiz: React.FC<QuizProps> = ({ onFinish, onCancel }) => {
       </div>
 
       <div className="relative z-10 w-full max-w-md bg-stone-50 rounded-[2.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col border border-white/20">
-        
-        {/* Floating Hero Image & Name Bar */}
         <div className="bg-white px-6 py-5 flex items-center justify-between border-b border-stone-100">
           <div className="flex items-center gap-3">
             <div className="relative">
@@ -51,19 +48,18 @@ const Quiz: React.FC<QuizProps> = ({ onFinish, onCancel }) => {
                 </div>
             </div>
             <div>
-              <h2 className="text-primary font-black text-base leading-none uppercase tracking-tighter">Dra. {EXPERT_DATA.name}</h2>
+              <h2 className="text-stone-900 font-black text-base leading-none uppercase tracking-tighter">Dra. {EXPERT_DATA.name}</h2>
               <p className="text-[10px] text-accent font-black mt-1.5 uppercase tracking-[0.2em]">Avaliação de Perfil</p>
             </div>
           </div>
           <button 
             onClick={onCancel} 
-            className="bg-stone-100 text-stone-400 hover:text-primary w-10 h-10 rounded-full flex items-center justify-center transition-all active:scale-90"
+            className="bg-stone-100 text-stone-400 hover:text-stone-900 w-10 h-10 rounded-full flex items-center justify-center transition-all active:scale-90"
           >
             ✕
           </button>
         </div>
 
-        {/* Progress Bar */}
         <div className="w-full h-2 bg-stone-200">
           <div 
             className="h-full bg-accent transition-all duration-700 ease-out shadow-[0_0_15px_rgba(212,175,55,0.6)]"
@@ -71,7 +67,6 @@ const Quiz: React.FC<QuizProps> = ({ onFinish, onCancel }) => {
           />
         </div>
 
-        {/* Quiz Content */}
         <div className="p-7 md:p-10 flex-1 bg-gradient-to-b from-white to-stone-50/50">
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
@@ -80,7 +75,7 @@ const Quiz: React.FC<QuizProps> = ({ onFinish, onCancel }) => {
                 </span>
                 <span className="text-xs font-black text-accent">{Math.round(progress)}%</span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-serif font-bold text-primary leading-tight">
+            <h3 className="text-2xl md:text-3xl font-serif font-bold text-stone-900 leading-tight">
               {QUIZ_QUESTIONS[currentStep].text}
             </h3>
           </div>
@@ -101,7 +96,6 @@ const Quiz: React.FC<QuizProps> = ({ onFinish, onCancel }) => {
           </div>
         </div>
 
-        {/* Footer/Trust Badge */}
         <div className="px-8 py-5 bg-stone-100/80 text-center border-t border-stone-200/50 backdrop-blur-sm">
             <p className="text-[10px] text-stone-400 uppercase tracking-[0.2em] font-black">
               Segurança • Naturalidade • Dra. Borelli
@@ -109,7 +103,6 @@ const Quiz: React.FC<QuizProps> = ({ onFinish, onCancel }) => {
         </div>
       </div>
 
-      {/* Background Action Trigger */}
       <button 
         onClick={onCancel}
         className="mt-8 py-4 px-10 bg-white/5 backdrop-blur-xl border border-white/10 text-white text-xs font-black rounded-full uppercase tracking-[0.3em] hover:bg-white/15 transition-all active:scale-95 shadow-2xl"

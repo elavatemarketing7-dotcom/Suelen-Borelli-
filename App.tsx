@@ -1,17 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
-import { AppState, QuizResponse, EXPERT_DATA } from './types';
-import ChoiceScreen from './components/ChoiceScreen';
-import Quiz from './components/Quiz';
-import ResultPage from './components/ResultPage';
-import LandingPage from './components/LandingPage';
-import LoadingScreen from './components/LoadingScreen';
+import { AppState, QuizResponse, EXPERT_DATA } from './types.ts';
+import ChoiceScreen from './components/ChoiceScreen.tsx';
+import Quiz from './components/Quiz.tsx';
+import ResultPage from './components/ResultPage.tsx';
+import LandingPage from './components/LandingPage.tsx';
+import LoadingScreen from './components/LoadingScreen.tsx';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<AppState>('CHOICE');
   const [quizResponses, setQuizResponses] = useState<QuizResponse[]>([]);
 
-  // Smooth scroll to top when changing views
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentView]);
@@ -20,7 +19,6 @@ const App: React.FC = () => {
     setQuizResponses(responses);
     setCurrentView('LOADING');
     
-    // Simulate analysis time
     setTimeout(() => {
       setCurrentView('RESULT');
     }, 3000);
@@ -45,8 +43,8 @@ const App: React.FC = () => {
   const quizWhatsappLink = generateWhatsAppLink(true);
 
   return (
-    <div className="min-h-screen relative font-sans antialiased">
-      {/* Base Layer: Landing Page is behind most overlays */}
+    <div className="min-h-screen relative font-sans antialiased bg-black">
+      {/* Base Layer */}
       {(currentView === 'LANDING' || currentView === 'QUIZ' || currentView === 'LOADING' || currentView === 'RESULT') && (
         <LandingPage whatsappLink={whatsappLink} />
       )}
